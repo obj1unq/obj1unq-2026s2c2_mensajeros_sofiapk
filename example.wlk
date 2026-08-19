@@ -2,6 +2,12 @@ object paquete {
 	var destino = laMatrix // o puenteDeBrooklyn
 	var estáPago = false // puede cambiar
 
+	method destino() = destino
+
+	method destino(_destino) {
+	  destino = _destino
+	}
+	
 	method estáPago() = estáPago
 
 	method estáPago(_estáPago) {
@@ -34,14 +40,14 @@ object saraConnor {
 	
 	method vehículo() = vehículo
 
-	method vehículoNuevo(_vehículoNuevo){
-		vehículo = _vehículoNuevo
+	method vehículo(_vehículo){
+		vehículo = _vehículo
 	}
 	
 	method peso() = peso + self.vehículo().pesoDelVehículo()
 	
-	method pesoNuevo(_pesoNuevo){
-		peso = _pesoNuevo
+	method peso(_peso){
+		peso = _peso
 	}
 
 	method puedeHacerLlamada() = false
@@ -77,19 +83,25 @@ object laMatrix {
 
 /*
 Para pensar:
+
+Tipo de los objetos polimórficos:
+	- Persona: mensajes que entiende puedeHacerLlamada() y peso() - paquete es el emisor 
+	- Destino: precioPaqueteEnDestino() y dejarPasar(persona) - paquete es el emisor 
+	- Vehiculo: mensajes que entiende pesoDelVehículo() - saraConnor es la emisora
+
+Polimorfismo:
 	- Tanto laMatrix como puenteDeBrooklyn entienden los mensajes precioPaqueteEnDestino() y dejarPasar(persona),
 	esto facilita que el paquete pueda interactuar con ellos en puedeSerEntregadoPor(persona) y precioPaquete().
-
 	- Las tres personas mensajeras, neo, saraConnor y jeanGrey, entienden los mensajes peso() y puedeHacerLlamada(),
 	los destinos interactúan con estos mensajes, puenteDeBrooklyn con el mensaje peso() y laMatrix con puedeHacerLlamada()
-
 	- Los dos tipos de vehículos que puede llegar a manejar saraConnor, camión y moto, entienden el mensaje pesoDelVehículo()
-
+	- Paquete interactua con persona ( neo, saraConnor o jeanGrey) en el mensaje puedeSerEntregadoPor(persona) 
+	y destino (puenteDeBrooklyn o laMatrix) en el mensaje precioPaquete()
 
 Mencionar un mensaje que sea una orden y otro que sea una consulta
 	- consulta: en paquete, el mensaje puedeSerEntregadoPor(persona)
-	- orden: no hice muchos y no se si valen los siguientes mensajes: pesoNuevo(_pesoNuevo) y vehículoNuevo(_vehículoNuevo) (me queda la duda para hacerla en clases)
+	- orden: estáPago(_estáPago), destino(_destino) , peso(_peso) y vehículo(_vehículo)
 
 En tu solución, el mensajero es un atributo del paquete o no? Por qué? Pensar como sería la manera alternativa.
-
+	- No lo es, es un parametro. La forma alternativa de mi solucion es crearlo como atributo, similar a como configure destino.
 */
