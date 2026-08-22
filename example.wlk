@@ -74,3 +74,22 @@ object laMatrix {
   method dejarPasar(persona) = persona.puedeHacerLlamada()
   // deja entrar a quien pueda hacer una llamada.
 }
+
+/*
+Para pensar:
+	- Tanto laMatrix como puenteDeBrooklyn entienden los mensajes precioPaqueteEnDestino() y dejarPasar(persona),
+	esto facilita que el paquete pueda interactuar con ellos en puedeSerEntregadoPor(persona) y precioPaquete().
+
+	- Las tres personas mensajeras, neo, saraConnor y jeanGrey, entienden los mensajes peso() y puedeHacerLlamada(),
+	los destinos interactúan con estos mensajes, puenteDeBrooklyn con el mensaje peso() y laMatrix con puedeHacerLlamada()
+
+	- Los dos tipos de vehículos que puede llegar a manejar saraConnor, camión y moto, entienden el mensaje pesoDelVehículo()
+
+
+Mencionar un mensaje que sea una orden y otro que sea una consulta
+	- consulta: en paquete, el mensaje puedeSerEntregadoPor(persona)
+	- orden: no hice muchos y no se si valen los siguientes mensajes: pesoNuevo(_pesoNuevo) y vehículoNuevo(_vehículoNuevo) (me queda la duda para hacerla en clases)
+
+En tu solución, el mensajero es un atributo del paquete o no? Por qué? Pensar como sería la manera alternativa.
+
+*/
